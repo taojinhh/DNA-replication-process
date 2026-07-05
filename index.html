@@ -112,7 +112,7 @@
     display:none; text-align:center; margin-top:14px; padding:14px; border-radius:12px;
     background:#e8f7ec; border:1px solid #b6e4c2; color:#227a3d; font-weight:800; font-size:16px;
   }
-  footer{text-align:center; color:var(--muted); font-size:12.5px; padding:22px;}
+  footer{text-align:center; color:var(--muted); font-size:12.5px; padding:22px; line-height:1.6;}
   @media(max-width:560px){
     header h1{font-size:21px;}
     .tab{min-width:calc(50% - 4px); font-size:13.5px;}
@@ -120,7 +120,7 @@
   }
 </style>
 </head>
-<body>
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
 <header>
   <h1>🧬 DNA 복제 과정 시뮬레이션</h1>
   <p>버튼과 그림을 <b>클릭</b>하며 DNA가 복제되는 과정을 단계별로 관찰해 보세요</p>
@@ -133,7 +133,6 @@
     <div class="tab" data-tab="2"><span class="num">3</span>염기 짝짓기 실습</div>
   </div>
 
-  <!-- ================= 모듈 1 : 반보존적 복제 ================= -->
   <div class="panel active" id="panel0">
     <div class="card">
       <div class="stage"><svg id="svg1" viewBox="0 0 900 440"></svg></div>
@@ -155,7 +154,6 @@
     </div>
   </div>
 
-  <!-- ================= 모듈 2 : 복제 분기점 ================= -->
   <div class="panel" id="panel1">
     <div class="card">
       <div class="stage"><svg id="svg2" viewBox="0 0 900 480"></svg></div>
@@ -179,7 +177,6 @@
     </div>
   </div>
 
-  <!-- ================= 모듈 3 : 염기 짝짓기 실습 ================= -->
   <div class="panel" id="panel2">
     <div class="card">
       <p class="hint" style="text-align:center;margin-top:0">
@@ -207,7 +204,10 @@
     </div>
   </div>
 
-  <footer>고등학교 생명과학 · DNA 복제(반보존적 복제) 학습용 시뮬레이션</footer>
+  <footer>
+    고등학교 생명과학 · DNA 복제(반보존적 복제) 학습용 시뮬레이션<br>
+    <span style="font-size: 11.5px; opacity: 0.8;">All Rights Reserved (무단 전재 및 재배포 금지)</span>
+  </footer>
 </div>
 
 <script>
@@ -366,11 +366,11 @@ document.querySelectorAll('.tab').forEach(t=>{
   const svg=document.getElementById('svg2');
   let step=0; const MAX=5;
   const texts=[
-    {t:"① 이중 나선이 풀린다", d:"헬리케이스가 염기 사이의 수소 결합을 끊어 이중 가닥을 단일 가닥으로 풀어냅니다. 풀린 지점을 '복제 분기점'이라 하며 Y자 모양이 됩니다."},
-    {t:"② RNA 프라이머가 붙는다", d:"DNA 중합효소는 스스로 합성을 시작하지 못합니다. 그래서 합성이 시작되는 자리에 짧은 RNA 프라이머(초록)가 먼저 만들어져 시작점을 제공합니다."},
-    {t:"③ 선도 가닥: 연속적으로 합성", d:"분기점이 열리는 방향과 같은 쪽 가닥에서는 DNA 중합효소(주황)가 5'→3' 방향으로 끊김 없이 연속적으로 새 가닥을 합성합니다. 이를 선도 가닥이라 합니다."},
-    {t:"④ 지연 가닥: 짧은 조각으로 합성", d:"반대쪽 가닥은 분기점과 반대 방향으로만 5'→3' 합성이 가능해, 프라이머를 여러 번 만들며 짧은 조각(오카자키 절편)으로 끊어서 합성합니다. 이를 지연 가닥이라 합니다."},
-    {t:"⑤ DNA 연결효소가 조각을 잇는다", d:"지연 가닥의 짧은 조각들은 DNA 연결효소(초록 덩어리)가 이어 붙여 하나의 연속된 가닥으로 완성합니다. 이렇게 양쪽 새 가닥이 모두 완성됩니다."}
+    {t:"① 이중 나선이 풀린다", d:"\uD5EC\uD2AC\uCF00\uC774\uC2A4\uAC00 \uC5FC\uAE30 \uC0AC\uC774\uC758 \uC218\uC18C \uAC1B\uD569\uC744 \uAF4A\uC5B4 \uC774\uC91B \uAC10\uB2E5\uC744 \uB2E8\uC77C \uAC10\uB2E5\uC73C\uB85C \uD480\uC5B4\uB0B8\uB2C8\uB2E4. \uD480\uB9B0 \uC9C0\uC510\uC744 '\uBC30\uC81C \uBD84\uAE30\uC810'\uC774\uB77C \uD558\uBA70 Y\uC790 \uBAA8\uC591\uC774 \uB429\uB2C8\uB2E4."},
+    {t:"② RNA 프라이머가 붙는다", d:"DNA \uC911\uD569\uD6A8\uC18C\uB294 \uC2A4\uC2A4\uB85C \uD569\uC131\uC744 \uC2DC\uC791\uD558\uC9C0 \uBABB\uD569\uB2C8\uB2E4. \uADF8\uB798\uC11C \uD569\uC131\uC774 \uC2DC\uC791\uB418\uB294 \uC790\uB9AC\uC5D0 \uC9E7\uC740 RNA \uD504\uB77C\uC774\uBA38(\uCE20\uB85D)\uAC00 \uBA3C\uC800 \uB9CC\uB4E4\uC5B4\uC9CB \uC2DC\uC791\uC810\uC744 \uC81C\uAC35\uD569\uB2C8\uB2E4."},
+    {t:"③ 선도 가닥: 연속적으로 합성", d:"\uBD84\uAE30\uC810\uC774 \uC5F4\uB9AC\uB294 \uBC29\uD5A5\uACFC \uAC19\uC740 \uC2E0 \uAC10\uB2E5\uC5D0\uC11C\uB294 DNA \uC911\uD569\uD6A8\uC18C(\uC8FC\uD669)\uAC00 5'→3' \uBC29\uD5A5\uAEC4 \uAF4A\uC73C \uC5C6\uC774 \uC5F0\uC18D\uC801\uC73C\uB85C \uC0C8 \uAC10\uB2E5\uC744 \uD569\uC131\uD569\uB2C8\uB2E4. \uC774\uB97C \uC120\uB3C4 \uAC10\uB2E5\uC774\uB77C \uD569\uB2C8\uB2E4."},
+    {t:"④ 지연 가닥: 짧은 조각으로 합성", d:"\uBC18\uB300\uCF5D \uAC10\uB2E5\uC740 \uBD84\uAE30\uC810\uACFC \uBC18\uB300 \uBC29\uD5A5\uC73C\uB85C\uB9CC 5'→3' \uD569\uC131\uC774 \uAC00\uB2A5\uD574, \uD504\uB77C\uC774\uBA38\uB97C \uC5EC\uB7EC \uBC88 \uB9CC\uB4E4\uC170 \uC9E7\uC740 \uC870\uAC01(\uC624\uCE74\uC790\uED04 \uC808\uED01)\uC73C\uB85C \uAF4A\uC5B4\uC11C \uD569\uC131\uD569\uB2C8\uB2E4. \uC774\uB97C \uC9C0\uC51O \uAC10\uB2E5\uC774\uB77C \uD569\uB2C8\uB2E4."},
+    {t:"⑤ DNA 연결효소가 조각을 잇는다", d:"\uC9C0\uC51O \uAC10\uB2E5\uC758 \uC9E7\uC740 \uC870\uAC01\uB4E4\uC740 DNA \uC5F0\uACB0\uD6A8\uC18C(\uCE20\uB85D \uB369\uC5B4\uB9AC)\uAC00 \uC774\uC5B4 \uBD90\uCE50 \uD558\uB098\uC758 \uC5F0\uC18D\uB41C \uAC10\uB2E5\uC73C\uB85C \uC644\uC131\uD569\uB2C8\uB2E4. \uC774\uB807\uAC8C \uC591\uCF5D \uC0AC \uAC10\uB2E5\uC774 \uBAA8\uB450 \uC644\uC131\uD569\uB2C8\uB2E4."}
   ];
 
   function enzyme(x,y,label,fill,dark){
